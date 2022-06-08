@@ -3,20 +3,22 @@
  * Author: Abi Kunkle
  * Date: 06/08/22
  */
-package org.example;
+package org.exerciseone;
 
 // Broad imports
-import java.io.*;
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import java.util.stream.*;
 
 public class Main {
-    public static void main(String[] args) {
-        //System.out.println("Hello world!");
-        ArrayList<Item> inventoryList = new ArrayList<Item>();
+    static ArrayList<Item> inventoryList = new ArrayList<>();
+    public static void streamFilter() {
+        // Filters out items that do not begin with T. Then, sorts by item price and reverses order so it is descending. Finally, print info for item
+        inventoryList.stream()
+                .filter(item -> item.getItemBrand().startsWith("T"))
+                .sorted(Comparator.comparingDouble(Item::getItemPrice).reversed())
+                .forEach(item -> System.out.println(item.returnAllInfo()));
 
+    }
+    public static void main(String[] args) {
         // VERY LAZY ADD ITEMS. Was going to make a JSON file which would be parsed but that was not the
         // point of this exercise and would have wasted today's time
         inventoryList.add(new Item("FFA123", "Toyota", "Brake Pads for 2011 Prius C", 45.99));
@@ -30,11 +32,8 @@ public class Main {
         inventoryList.add(new Item("GAT271", "Gates", "Hydraulic Hose Hydraulic Hose Very High Pressure", 19.99));
         inventoryList.add(new Item("BK8128", "Mi-T-M", "Mi-T-M Pressure Washer, Gas Powered, Hot Water, 3500 PSI", 6689.00));
 
-        // Filters out items that do not begin with T. Then, sorts by item price and reverses order so it is descending. Finally, print info for item
-        inventoryList.stream()
-                .filter(item -> item.getItemBrand().startsWith("T"))
-                .sorted(Comparator.comparingDouble(Item::getItemPrice).reversed())
-                .forEach(item -> System.out.println(item.returnAllInfo()));
+        streamFilter();
 
     }
+
 }

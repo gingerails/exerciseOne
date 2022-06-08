@@ -1,6 +1,5 @@
-package org.example;
+package org.exerciseone;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
