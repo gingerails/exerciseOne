@@ -10,17 +10,31 @@ import java.util.*;
 
 public class Main {
     static ArrayList<Item> inventoryList = new ArrayList<>();
-    public static void streamFilter() {
-        // Filters out items that do not begin with T. Then, sorts by item price and reverses order so it is descending. Finally, print info for item
+
+    /**
+     * filterLetter = single character to sort alphabetically by
+     * Filters out items that do not begin with T.
+     * Then, sorts by item price and reverses order so it is in descending.
+     * Finally, print info for item
+     */
+    static String filterLetter;
+    private static void streamFilter() {
         inventoryList.stream()
-                .filter(item -> item.getItemBrand().startsWith("T"))
+                .filter(item -> item.getItemBrand().startsWith(filterLetter))
                 .sorted(Comparator.comparingDouble(Item::getItemPrice).reversed())
                 .forEach(item -> System.out.println(item.returnAllInfo()));
-
     }
     public static void main(String[] args) {
+
         // VERY LAZY ADD ITEMS. Was going to make a JSON file which would be parsed but that was not the
-        // point of this exercise and would have wasted today's time
+        // point of this exercise and would have wasted today's time.
+
+        // Take the user's input as the alphabetical filter
+        System.out.println("User can filter alphabetically by brand. \nEnter a SINGLE LETTER to filter alphabetically by:");
+        Scanner keyboard = new Scanner(System.in);          // Take the user's input
+        filterLetter = keyboard.next().toUpperCase();       // make case insensitive
+
+
         inventoryList.add(new Item("FFA123", "Toyota", "Brake Pads for 2011 Prius C", 45.99));
         inventoryList.add(new Item("FFA124", "Toyota", "Brake Pads for 2011 Prius Standard", 45.99));
         inventoryList.add(new Item("CAI231", "OxiClean", "OxiClean Airvent CLeaner", 7.99));
@@ -32,8 +46,25 @@ public class Main {
         inventoryList.add(new Item("GAT271", "Gates", "Hydraulic Hose Hydraulic Hose Very High Pressure", 19.99));
         inventoryList.add(new Item("BK8128", "Mi-T-M", "Mi-T-M Pressure Washer, Gas Powered, Hot Water, 3500 PSI", 6689.00));
 
+
+
         streamFilter();
+
+
+
+        //filterClass.streamFilterBrand();
 
     }
 
+
+
 }
+
+//        if(filterSelect == '1'){        // If user selected 1, then filter by item ID
+//                System.out.println("Enter letter to filter by: ");
+//                String filterLetter = keyboard.nextLine();
+//                inventoryList.stream()
+//                .filter(item -> item.getItemBrand().startsWith(filterLetter))
+//                .sorted(Comparator.comparingDouble(Item::getItemPrice).reversed())
+//                .forEach(item -> System.out.println(item.returnAllInfo()));
+//                }
