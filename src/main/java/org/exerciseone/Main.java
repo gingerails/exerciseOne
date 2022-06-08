@@ -6,6 +6,13 @@
 package org.exerciseone;
 
 // Broad imports
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class Main {
@@ -17,18 +24,32 @@ public class Main {
      * Then, sorts by item price and reverses order so it is in descending.
      * Finally, print info for item
      */
-    static String filterLetter;
+    static String filterLetter = "";
     private static void streamFilter() {
         inventoryList.stream()
-                .filter(item -> item.getItemBrand().startsWith(filterLetter))
+                .filter(item -> item.getItemBrand().startsWith(filterLetter))      //.toLowerCase could be used here
                 .sorted(Comparator.comparingDouble(Item::getItemPrice).reversed())
                 .forEach(item -> System.out.println(item.returnAllInfo()));
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ParseException {
         // Take the user's input as the alphabetical filter
         System.out.println("User can filter alphabetically by brand. \nEnter a SINGLE LETTER to filter alphabetically by:");
         Scanner keyboard = new Scanner(System.in);          // Take the user's input
         filterLetter = keyboard.next().toUpperCase();       // make case insensitive
+
+        /**     JSON PARSING ATTEMPT. NOT DONE.
+         *         //Parse file
+         *         Object obj = new JSONParser().parse(new FileReader("items.json"));
+         *         // typecasting obj to JSONObject
+         *         JSONObject jo = (JSONObject) obj;
+         *
+         *         String ID = (String) jo.get("ID");
+         *         String Description = (String) jo.get("Description");
+         *         String Brand = (String) jo.get("Brand");
+         *         String Price = (String) jo.get("Price");
+         *         System.out.println(ID);
+         */
+
 
         // VERY LAZY ADD ITEMS. Was going to make a JSON file which would be parsed but that was not the
         // point of this exercise and would have wasted today's time.
@@ -43,13 +64,8 @@ public class Main {
         inventoryList.add(new Item("GAT271", "Gates", "Hydraulic Hose Hydraulic Hose Very High Pressure", 19.99));
         inventoryList.add(new Item("BK8128", "Mi-T-M", "Mi-T-M Pressure Washer, Gas Powered, Hot Water, 3500 PSI", 6689.00));
 
-
-
         streamFilter();
 
-
-
-        //filterClass.streamFilterBrand();
 
     }
 
