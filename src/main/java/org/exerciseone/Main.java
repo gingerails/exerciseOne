@@ -25,16 +25,13 @@ public class Main {
                 .forEach(item -> System.out.println(item.returnAllInfo()));
     }
     public static void main(String[] args) {
-
-        // VERY LAZY ADD ITEMS. Was going to make a JSON file which would be parsed but that was not the
-        // point of this exercise and would have wasted today's time.
-
         // Take the user's input as the alphabetical filter
         System.out.println("User can filter alphabetically by brand. \nEnter a SINGLE LETTER to filter alphabetically by:");
         Scanner keyboard = new Scanner(System.in);          // Take the user's input
         filterLetter = keyboard.next().toUpperCase();       // make case insensitive
 
-
+        // VERY LAZY ADD ITEMS. Was going to make a JSON file which would be parsed but that was not the
+        // point of this exercise and would have wasted today's time.
         inventoryList.add(new Item("FFA123", "Toyota", "Brake Pads for 2011 Prius C", 45.99));
         inventoryList.add(new Item("FFA124", "Toyota", "Brake Pads for 2011 Prius Standard", 45.99));
         inventoryList.add(new Item("CAI231", "OxiClean", "OxiClean Airvent CLeaner", 7.99));
