@@ -10,7 +10,7 @@ public class Item implements Comparator<Item> {
     private String itemId;
     private String itemDescription;
     private String itemBrand;
-    private double itemPrice;// I read online that floats/doubles shouldn't be used for currency. I will look into BigDecimal if that should be used.
+    private double itemPrice;// I read online that floats/doubles shouldn't be used for currency. I will look into BigDecimal.
 
     /**
      * Default constructor, sets data to unknown, 0 values

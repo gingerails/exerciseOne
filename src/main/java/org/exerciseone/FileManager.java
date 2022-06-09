@@ -16,17 +16,19 @@ import java.io.Reader;
 
 public class FileManager {
 
-    //Parse file
-    Object obj = new JSONParser().parse(new FileReader("items.json"));
-    // typecasting obj to JSONObject
-    JSONObject jo = (JSONObject) obj;
 
-    String itemID = (String) jo.get("ID");
-    String itemDescript = (String) jo.get("Description");
-    String itemBrand = (String) jo.get("Brand");
-    String itemPrice = (String) jo.get("Price");
-    public FileManager() throws IOException, ParseException {
-    }
+
+
+    //Parse file
+//    Object obj = new JSONParser().parse(new FileReader("items.json"));
+//    // typecasting obj to JSONObject
+//    JSONObject jo = (JSONObject) obj;
+//
+//    String itemID = (String) jo.get("ID");
+//    String itemDescript = (String) jo.get("Description");
+//    String itemBrand = (String) jo.get("Brand");
+//    String itemPrice = (String) jo.get("Price");
+
 
 
 //    private String itemFile = "items.json";
@@ -53,4 +55,19 @@ public class FileManager {
 //            String m_Price = (String) m_jsonObject.get("ItemPrice");
 //
 //    }
+
+    // JSON PARSING ATTEMPT. NOT DONE.
+    //Parse file
+
+    //        JSONArray obj = new JSONParser().parse(new FileReader("items.json"));
+//      // typecasting obj to JSONObject
+//        //JSONObject jo = (JSONObject) obj;
+//
+//        String ID = (String) jo.get("ID");
+//        String Description = (String) jo.get("Description");
+//        String Brand = (String) jo.get("Brand");
+//        String Price = (String) jo.get("Price");
+
+
+
 }
